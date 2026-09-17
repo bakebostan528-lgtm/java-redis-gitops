@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: java-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: java-app
@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: asylaiym/java-app:v1
+        image: hashicorp/http-echo:latest
+        args:
+          - "-text=Hello from Kubernetes!"
         ports:
-        - containerPort: 8080
+        - containerPort: 5678
